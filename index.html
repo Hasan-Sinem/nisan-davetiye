@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
         }
-        
+
         body {
             font-family: "Georgia", "Times New Roman", serif;
             background-color: #f5f1e8;
@@ -54,21 +54,20 @@
         }
 
         .envelope-img {
-            position: absolute;
-            inset: 0;            /* tüm kenarları sıfır */
-            width: 100%;
-            height: 100%;
-            object-fit: cover;   /* 9:16 görüntüyü orantılı büyütür */
+           position: absolute;
+           inset: 0;            /* tüm kenarları sıfır */
+           width: 100%;
+           height: 100%;
+           object-fit: cover;   /* 9:16 görüntüyü orantılı büyütür */
         }
 
-
         /* Video da zarfa benzer şekilde ortalansın */
-        #introVideo {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+       #introVideo {
+           position: absolute;
+           inset: 0;
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
         }
 
 
@@ -78,16 +77,14 @@
         }
 
         .hero {
-            position: fixed;
-            inset: 0;
+            position: relative;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: #ece6e6;
-            overflow: hidden;
-       }
-
+        }
 
         /* Buraya 2. görsel (resimli davetiye) arka plan olarak gelecek */
         .hero::before {
@@ -236,12 +233,13 @@
         }
 
          /* YUMUŞAK GEÇİŞ ANİMASYONLARI */
-             .fade-out {
-                 animation: fadeOut 0.7s ease forwards;
+           .fade-out {
+               animation: fadeOut 0.8s ease forwards;
         }
 
+        
              .fade-in {
-               animation: fadeIn 0.7s ease forwards;
+                 animation: fadeIn 1s ease forwards;
         }
 
         @keyframes fadeOut {
@@ -253,24 +251,7 @@
           from { opacity: 0; }
            to   { opacity: 1; }
         }
-        @keyframes slideUpFade {
-    0% {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    80% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-.slide-up {
-    animation: slideUpFade 1.2s ease-out forwards;
-}
     </style>
 </head>
 <body>
@@ -294,9 +275,9 @@
 <div id="main-screen" class="hidden">
 
     <!-- HERO / İSİM EKRANI -->
-    <section class="hero">
+    <section class="hero hidden">
         <div class="hero-content">
-            <div class="hero-title slide-up">NİŞANIMIZA DAVETLİSİNİZ</div>
+            <div class="hero-title">NİŞANIMIZA DAVETLİSİNİZ</div>
             <div class="hero-names">
                 Sinem<br>&amp;<br>Hasan
             </div>
