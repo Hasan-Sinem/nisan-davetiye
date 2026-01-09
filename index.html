@@ -54,16 +54,17 @@
         }
 
         .envelope-img {
-            max-width: 90vw;
-            max-height: 90vh;
-            border-radius: 6px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            width: 112vw;       /* ekranın tamamı genişlik */
+            height: 112vh;      /* ekranın tamamı yükseklik */
+            object-fit: cover;  /* orantılı şekilde ekranı doldurur */
+            display: block;
+
         }
 
         /* Video da zarfa benzer şekilde ortalansın */
         #introVideo {
-            max-width: 90vw;
-            max-height: 90vh;
+            width: 130vw;
+            height: 130vh;
             border-radius: 6px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
