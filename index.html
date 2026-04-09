@@ -5,11 +5,9 @@
     <title>Sinem & Hasan – Nişan Davetiyesi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Yazı tipleri -->
     <link href="https://fonts.googleapis.com/css2?family=Englebert&family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
-        /* GENEL STİL */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -39,7 +37,6 @@
             font-weight: normal;
         }
 
-        /* 1) ZARF EKRANI */
         #envelope-screen {
             height: 100vh;
             display: flex;
@@ -69,7 +66,6 @@
             object-fit: cover;
         }
 
-        /* ZARF VİDEOSU */
         #introVideo {
             position: absolute;
             inset: 0;
@@ -78,12 +74,10 @@
             object-fit: cover;
         }
 
-        /* 2) ANA EKRAN / HERO – TEK TANE */
         #main-screen {
             min-height: 100vh;
         }
 
-        /* HERO TAM EKRAN OLSUN, SECTION PADDING'İ KULLANMASIN */
         section.hero {
             padding: 0;
         }
@@ -95,7 +89,6 @@
             overflow: hidden;
         }
 
-        /* Video + static görsel aynı kutuda */
         .hero-media {
             position: absolute;
             inset: 0;
@@ -110,10 +103,9 @@
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;   /* ikisi de tam aynı boyutta dursun */
+            object-fit: cover;
         }
 
-        /* YAZILARIN KONUM AYARLARI */
         .hero-content {
             position: relative;
             z-index: 2;
@@ -132,28 +124,28 @@
             transform: translateX(-50%);
         }
 
-        /* Üstte duran "NİŞANIMIZA DAVETLİSİNİZ" */
         .hero-title {
             top: 23%;
             font-size: 0.9rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
+            animation: slideUpFadeFix 1.5s ease forwards;
         }
 
-        /* Ortadaki büyük isimler */
         .hero-names {
             top: 35%;
             transform: translate(-50%, -50%);
             font-family: "Great Vibes", cursive;
             font-size: clamp(3rem, 7vw, 4.8rem);
             line-height: 1.1;
+            animation: slideUpFadeFix 1.8s ease forwards;
         }
 
-        /* Alttaki davet metni */
         .hero-date {
             bottom: 30%;
             font-size: 1.2rem;
             max-width: 90%;
+            animation: slideUpFadeFix 2.1s ease forwards;
         }
 
         .scroll-indicator {
@@ -166,7 +158,6 @@
             color: #49693f;
         }
 
-        /* 3) GERİ SAYIM BÖLÜMÜ */
         .countdown-section {
             background-image: url("countdown-bg.jpg");
             background-size: cover;
@@ -176,19 +167,19 @@
             padding: 40px 20px;
             text-align: center;
         }
-        .countdown-title {
-    font-size: 2rem; /* istersen daha büyük de yapabilirsin */
-    background: linear-gradient(45deg, #5a3a22, #b87333, #f2c18d, #b87333, #5a3a22);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: brightness(1.25) contrast(1.2);
-    text-shadow:
-        0px 0px 6px rgba(0,0,0,0.35),
-        0px 0px 12px rgba(0,0,0,0.25);
-    font-family: "Englebert", sans-serif; /* uyumlu olsun */
-}
 
+        .countdown-title {
+            font-size: 2rem;
+            background: linear-gradient(45deg, #5a3a22, #b87333, #f2c18d, #b87333, #5a3a22);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: brightness(1.25) contrast(1.2);
+            text-shadow:
+                0px 0px 6px rgba(0,0,0,0.35),
+                0px 0px 12px rgba(0,0,0,0.25);
+            font-family: "Englebert", sans-serif;
+        }
 
         .countdown-section h2 {
             font-size: 2rem;
@@ -198,6 +189,12 @@
         .countdown-section p {
             margin-bottom: 30px;
             font-size: 1rem;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+            color: #bddbad !important;
+            text-shadow: none !important;
+            filter: none !important;
         }
 
         .countdown-grid {
@@ -210,13 +207,12 @@
         }
 
         .countdown-box {
-            border: 1px solid #bddbad; /* çerçeve rengi */
+            border: 1px solid #bddbad;
             border-radius: 8px;
             padding: 20px 10px;
             color: #8f9e82;
         }
 
-        /* Geri sayım yazı tipi: Englebert */
         .countdown-section h2,
         .countdown-section p,
         .countdown-section .countdown-number,
@@ -224,7 +220,6 @@
             font-family: "Englebert", sans-serif;
         }
 
-        /* Bakır metalik sayı görünümü */
         .countdown-number {
             font-size: 2rem;
             margin-bottom: 8px;
@@ -237,98 +232,117 @@
                 0px 0px 6px rgba(0,0,0,0.35),
                 0px 0px 12px rgba(0,0,0,0.25);
         }
-        .countdown-label {
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    background: linear-gradient(45deg, #5a3a22, #b87333, #f2c18d, #b87333, #5a3a22);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: brightness(1.25) contrast(1.2);
-    text-shadow:
-        0px 0px 6px rgba(0,0,0,0.35),
-        0px 0px 12px rgba(0,0,0,0.25);
-}
-
 
         .countdown-label {
             font-size: 0.8rem;
             letter-spacing: 0.1em;
-            color: #a67f2d;
+            background: linear-gradient(45deg, #5a3a22, #b87333, #f2c18d, #b87333, #5a3a22);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: brightness(1.25) contrast(1.2);
+            text-shadow:
+                0px 0px 6px rgba(0,0,0,0.35),
+                0px 0px 12px rgba(0,0,0,0.25);
         }
 
-        /* Geri sayım açıklama metni: soft pastel yeşil */
-        .countdown-section p {
-            background: none !important;
-            -webkit-background-clip: initial !important;
-            background-clip: initial !important;
-            color: #bddbad !important;
-            text-shadow: none !important;
-            filter: none !important;
-        }
-
-        /* 4) LOKASYON BÖLÜMÜ */
         .location-section {
             background-color: #f5f1e8;
         }
 
+        .section-title {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #49693f;
+            font-size: 2rem;
+            font-family: "Englebert", sans-serif;
+        }
+
         .location-card {
             background-color: #fff;
-            border-radius: 12px;
+            border-radius: 16px;
             box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-            padding: 20px;
+            padding: 28px 20px;
             text-align: center;
         }
 
         .location-icon {
             font-size: 2rem;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .location-title {
-            font-size: 1.6rem;
-            margin-bottom: 5px;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #49693f;
+            font-family: "Englebert", sans-serif;
         }
 
         .location-subtitle {
-            font-size: 1rem;
-            margin-bottom: 10px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            color: #5c5c5c;
         }
 
         .location-time {
-            font-size: 0.9rem;
-            color: #666;
+            font-size: 1rem;
+            color: #7a6a52;
             margin-bottom: 20px;
+            font-weight: 500;
         }
 
         .location-img {
             width: 100%;
-            border-radius: 10px;
+            border-radius: 12px;
             margin-bottom: 20px;
+            display: block;
         }
 
         .map-btn {
             display: inline-block;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 12px 24px;
+            border-radius: 24px;
             text-decoration: none;
             background-color: #6f7954;
             color: #fff;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             letter-spacing: 0.05em;
+            transition: 0.25s ease;
         }
 
-        /* MOBİL UYUMLU */
+        .map-btn:hover {
+            background-color: #5f6848;
+        }
+
+        .location-note {
+            margin-top: 16px;
+            font-size: 0.95rem;
+            color: #7a7a7a;
+        }
+
         @media (max-width: 600px) {
             .hero-names {
                 font-size: 2.8rem;
             }
+
             .countdown-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .location-title {
+                font-size: 1.5rem;
+            }
+
+            .location-subtitle {
+                font-size: 0.98rem;
+            }
+
+            .location-time {
+                font-size: 0.95rem;
+            }
         }
 
-        /* YUMUŞAK GEÇİŞ ANİMASYONLARI */
         .fade-out {
             animation: fadeOut 0.8s ease forwards;
         }
@@ -347,220 +361,188 @@
             to   { opacity: 1; }
         }
 
-        @keyframes slideUpFade {
+        @keyframes slideUpFadeFix {
             0% {
                 opacity: 0;
-                transform: translateY(40px);
-            }
-            80% {
-                opacity: 1;
-                transform: translateY(0);
+                transform: translate(-50%, 40px);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translate(-50%, 0);
             }
         }
-
-        .slide-up {
-            animation: slideUpFade 2.8s ease-out forwards;
-        }
-        @keyframes slideUpFadeFix {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, 40px);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(-50%, 0);
-    }
-}
-
-.hero-title {
-    animation: slideUpFadeFix 1.5s ease forwards;
-}
-
-.hero-names {
-    animation: slideUpFadeFix 1.8s ease forwards;
-}
-
-.hero-date {
-    animation: slideUpFadeFix 2.1s ease forwards;
-}
-
     </style>
 </head>
 <body>
 
-<!-- 1) ZARF EKRANI -->
-<div id="envelope-screen">
-    <button id="openInvitation" class="envelope-btn">
-        <img src="zarf-gorseliniz.jpg" alt="Nişan davetiyesi zarfı" class="envelope-img">
-    </button>
+    <div id="envelope-screen">
+        <button id="openInvitation" class="envelope-btn">
+            <img src="zarf-gorseliniz.jpg" alt="Nişan davetiyesi zarfı" class="envelope-img">
+        </button>
 
-    <!-- Zarf videosu (BAŞTA GİZLİ) -->
-    <video id="introVideo" class="hidden" playsinline muted preload="auto">
-        <source src="intro-video.mp4" type="video/mp4">
-        Tarayıcınız video oynatmayı desteklemiyor.
-    </video>
-</div>
+        <video id="introVideo" class="hidden" playsinline muted preload="auto">
+            <source src="intro-video.mp4" type="video/mp4">
+            Tarayıcınız video oynatmayı desteklemiyor.
+        </video>
+    </div>
 
-<!-- 2) ANA DAVETİYE EKRANI -->
-<div id="main-screen" class="hidden">
+    <div id="main-screen" class="hidden">
 
-    <!-- HERO -->
-    <section class="hero">
-        <!-- VİDEO + STATIC GÖRSEL AYNI ALANDA -->
-        <div class="hero-media">
-            <img src="hero-static.jpg" alt="Nişan davetiyesi arka plan" class="hero-img">
+        <section class="hero">
+            <div class="hero-media">
+                <img src="hero-static.jpg" alt="Nişan davetiyesi arka plan" class="hero-img">
 
-            <video id="heroVideo" class="hero-video" autoplay muted playsinline preload="none">
-                <source src="hero-video.mp4" type="video/mp4">
-                Tarayıcınız video oynatmayı desteklemiyor.
-            </video>
-        </div>
+                <video id="heroVideo" class="hero-video" autoplay muted playsinline preload="none">
+                    <source src="hero-video.mp4" type="video/mp4">
+                    Tarayıcınız video oynatmayı desteklemiyor.
+                </video>
+            </div>
 
-        <!-- YAZILAR -->
-  <div class="hero-content">
-    <div class="hero-title">NİŞANIMIZA DAVETLİSİNİZ</div>
-    <div class="hero-names">Sinem<br>&amp;<br>Hasan</div>
-    <div class="hero-date">Bu özel günümüzde yanımızda olmanızdan mutluluk duyarız.</div>
-</div>
+            <div class="hero-content">
+                <div class="hero-title">NİŞANIMIZA DAVETLİSİNİZ</div>
+                <div class="hero-names">Sinem<br>&amp;<br>Hasan</div>
+                <div class="hero-date">Bu özel günümüzde yanımızda olmanızdan mutluluk duyarız.</div>
+            </div>
 
-        <div class="scroll-indicator">AŞAĞI KAYDIR</div>
-    </section>
+            <div class="scroll-indicator">AŞAĞI KAYDIR</div>
+        </section>
 
-    <!-- GERİ SAYIM BÖLÜMÜ -->
-    <section class="countdown-section">
-        <div class="container">
-            <h2 class="countdown-title">Geri Sayım</h2>
-            <p>Hayatımızın en özel günü için kalan süre:</p>
+        <section class="countdown-section">
+            <div class="container">
+                <h2 class="countdown-title">Geri Sayım</h2>
+                <p>Hayatımızın en özel günü için kalan süre:</p>
 
-            <div class="countdown-grid">
-                <div class="countdown-box">
-                    <div id="days" class="countdown-number">0</div>
-                    <div class="countdown-label">GÜN</div>
-                </div>
-                <div class="countdown-box">
-                    <div id="hours" class="countdown-number">0</div>
-                    <div class="countdown-label">SAAT</div>
-                </div>
-                <div class="countdown-box">
-                    <div id="minutes" class="countdown-number">0</div>
-                    <div class="countdown-label">DAKİKA</div>
-                </div>
-                <div class="countdown-box">
-                    <div id="seconds" class="countdown-number">0</div>
-                    <div class="countdown-label">SANİYE</div>
+                <div class="countdown-grid">
+                    <div class="countdown-box">
+                        <div id="days" class="countdown-number">0</div>
+                        <div class="countdown-label">GÜN</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div id="hours" class="countdown-number">0</div>
+                        <div class="countdown-label">SAAT</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div id="minutes" class="countdown-number">0</div>
+                        <div class="countdown-label">DAKİKA</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div id="seconds" class="countdown-number">0</div>
+                        <div class="countdown-label">SANİYE</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- LOKASYON BÖLÜMÜ -->
-    <section class="location-section">
-        <div class="container">
-            <h2 style="text-align:center; margin-bottom:20px;">Günün Detayları</h2>
+        <section class="location-section">
+            <div class="container">
+                <h2 class="section-title">Konum Bilgileri</h2>
 
-            <div class="location-card">
-                <div class="location-icon">📍</div>
-                <div class="location-title">Nişan Mekanı</div>
-                <div class="location-subtitle">Kocaeli – Başiskele</div>
+                <div class="location-card">
+                    <div class="location-icon">📍</div>
 
-                <div class="location-time">Saat: 17:00 – 23:00</div>
+                    <div class="location-title">Satuti Restaurant Cafe</div>
 
-                <img src="mekan-fotografi.jpg" alt="Nişan mekanı" class="location-img">
+                    <div class="location-subtitle">
+                        Kılıçarslan Mah. Hürriyet Cd. No:127<br>
+                        41030 Başiskele / Kocaeli
+                    </div>
 
-                <a href="#" target="_blank" class="map-btn">
-                    Haritada Gör
-                </a>
+                    <div class="location-time">
+                        19 Nisan 2026 | Saat: 17:00 – 23:00
+                    </div>
+
+                    <img src="mekan-fotografi.jpg" alt="Satuti Restaurant Cafe" class="location-img">
+
+                    <a
+                        href="https://www.google.com/maps/place/Satuti+Restaurant+Cafe/@40.679648,29.9090671,17z/data=!3m1!4b1!4m9!3m8!1s0x14cb43922867aabb:0xbc9ca3f232735055!5m2!4m1!1i2!8m2!3d40.679644!4d29.911642!16s%2Fg%2F11g7z094q7?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank"
+                        class="map-btn"
+                    >
+                        Konumu Aç
+                    </a>
+
+                    <div class="location-note">
+                        Yol tarifi için butona tıklayabilirsiniz.
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-</div>
+    </div>
 
-<!-- JAVASCRIPT -->
-<script>
-    // 1) Zarf, video ve ekranlar
-    const openBtn        = document.getElementById("openInvitation");
-    const envelopeScreen = document.getElementById("envelope-screen");
-    const mainScreen     = document.getElementById("main-screen");
-    const introVideo     = document.getElementById("introVideo");
-    const heroVideo      = document.getElementById("heroVideo");
+    <script>
+        const openBtn = document.getElementById("openInvitation");
+        const envelopeScreen = document.getElementById("envelope-screen");
+        const mainScreen = document.getElementById("main-screen");
+        const introVideo = document.getElementById("introVideo");
+        const heroVideo = document.getElementById("heroVideo");
 
-    // ZARFA TIKLANINCA:
-    openBtn.addEventListener("click", function () {
-        openBtn.style.display = "none";
-        introVideo.classList.remove("hidden");
-        introVideo.play().catch(err => {
-            console.log("Video otomatik başlamadı:", err);
+        openBtn.addEventListener("click", function () {
+            openBtn.style.display = "none";
+            introVideo.classList.remove("hidden");
+            introVideo.play().catch(err => {
+                console.log("Video otomatik başlamadı:", err);
+            });
         });
-    });
 
-    // ZARF VİDEOSU BİTİNCE:
-    introVideo.addEventListener("ended", function () {
-        envelopeScreen.classList.add("fade-out");
+        introVideo.addEventListener("ended", function () {
+            envelopeScreen.classList.add("fade-out");
 
-        setTimeout(() => {
-            envelopeScreen.style.display = "none";
-            mainScreen.classList.remove("hidden");
-            mainScreen.classList.add("fade-in");
+            setTimeout(() => {
+                envelopeScreen.style.display = "none";
+                mainScreen.classList.remove("hidden");
+                mainScreen.classList.add("fade-in");
 
-            if (heroVideo) {
-                heroVideo.play().catch(err => {
-                    console.log("Hero video başlamadı:", err);
-                });
-            }
+                if (heroVideo) {
+                    heroVideo.play().catch(err => {
+                        console.log("Hero video başlamadı:", err);
+                    });
+                }
 
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        }, 700);
-    });
-
-    // HERO VİDEOSU BİTİNCE: videoyu gizle, static görsel kalsın
-    if (heroVideo) {
-        heroVideo.addEventListener("ended", () => {
-            heroVideo.style.display = "none";
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }, 700);
         });
-    }
 
-    // 2) GERİ SAYIM
-    const targetDate = new Date("2026-04-19T00:00:00");
-
-    function updateCountdown() {
-        const now = new Date();
-        const diff = targetDate - now;
-
-        const daysEl    = document.getElementById("days");
-        const hoursEl   = document.getElementById("hours");
-        const minutesEl = document.getElementById("minutes");
-        const secondsEl = document.getElementById("seconds");
-
-        if (diff <= 0) {
-            daysEl.textContent    = "0";
-            hoursEl.textContent   = "0";
-            minutesEl.textContent = "0";
-            secondsEl.textContent = "0";
-            return;
+        if (heroVideo) {
+            heroVideo.addEventListener("ended", () => {
+                heroVideo.style.display = "none";
+            });
         }
 
-        const totalSeconds = Math.floor(diff / 1000);
+        const targetDate = new Date("2026-04-19T00:00:00");
 
-        const days    = Math.floor(totalSeconds / (60 * 60 * 24));
-        const hours   = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
-        const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
-        const seconds = totalSeconds % 60;
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
 
-        daysEl.textContent    = days;
-        hoursEl.textContent   = hours.toString().padStart(2, "0");
-        minutesEl.textContent = minutes.toString().padStart(2, "0");
-        secondsEl.textContent = seconds.toString().padStart(2, "0");
-    }
+            const daysEl = document.getElementById("days");
+            const hoursEl = document.getElementById("hours");
+            const minutesEl = document.getElementById("minutes");
+            const secondsEl = document.getElementById("seconds");
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-</script>
+            if (diff <= 0) {
+                daysEl.textContent = "0";
+                hoursEl.textContent = "0";
+                minutesEl.textContent = "0";
+                secondsEl.textContent = "0";
+                return;
+            }
+
+            const totalSeconds = Math.floor(diff / 1000);
+            const days = Math.floor(totalSeconds / (60 * 60 * 24));
+            const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+            const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+            const seconds = totalSeconds % 60;
+
+            daysEl.textContent = days;
+            hoursEl.textContent = hours.toString().padStart(2, "0");
+            minutesEl.textContent = minutes.toString().padStart(2, "0");
+            secondsEl.textContent = seconds.toString().padStart(2, "0");
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
 
 </body>
 </html>
-
